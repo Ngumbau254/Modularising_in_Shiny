@@ -1,0 +1,41 @@
+```{r}
+
+
+library(dplyr)
+library(sf)
+library(ggplot2)
+library(tmap)
+```
+
+```{r}
+
+
+  str(afsis.data)
+
+```
+```{r}
+ggplot(afsis.data, aes(x=LandCover, y=CORG, fill=Depth))+
+geom_boxplot(notch = TRUE)
+```
+
+```{r}
+data("World")
+World%>%
+  filter(continent=="Africa")%>%
+  plot()
+```
+
+```{r}
+data("World")
+
+World%>%
+  filter(continent=="Africa")%>%
+  tm_shape()+
+  tm_borders(col="brown")+
+  tm_shape(afsis.data)+
+  tm_dots(col="LandCover", size = "CORG")
+```
+
+
+
+
